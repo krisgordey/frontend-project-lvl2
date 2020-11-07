@@ -1,0 +1,31 @@
+{
+  "name": "gengiff",
+  "version": "1.0.0",
+  "description": "Compares two configuration files and shows a difference.",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "gendiff": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krisgordey/frontend-project-lvl2.git"
+  },
+  "author": "Kristina Gordeeva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krisgordey/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/krisgordey/frontend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^6.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
