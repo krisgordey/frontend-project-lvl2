@@ -2,16 +2,18 @@
 import commander from 'commander';
 import fs from 'fs';
 
+import genDiff from '../src/index.js'
+
 const { version } = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 const program = new commander.Command();
 
-program.version(version)
-  .arguments('<filepath1> <filepath2>')
-  .description('Compares two configuration files and shows a difference.')
-
 program
-    .option('-f, --format [type]', 'output format')
+  .version(version)
+  .description('Compares two configuration files and shows a difference.')
+  .option('-f, --format [type]', 'output format')
+  .arguments('<filepath1> <filepath2>')
+  .action(genDiff);
 
 program.parse(process.argv);
 

@@ -11,3 +11,6 @@ rules:
 no-console: 0
 import/extensions: 0
 
+# Включает поддержку конструкции import.meta.url
+parserOptions:
+  ecmaVersion: 2020
