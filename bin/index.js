@@ -2,9 +2,9 @@
 import commander from 'commander';
 import fs from 'fs';
 
-import genDiff from '../src/index.js'
+import genDiff from '../src/index.js';
 
-const { version } = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+const { version } = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 const program = new commander.Command();
 

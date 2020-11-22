@@ -2,15 +2,11 @@
 
 # https://eslint.org/docs/user-guide/configuring#specifying-environments
 env:
-node: true
+  node: true
 
 extends:
 - 'airbnb-base'
 
 rules:
-no-console: 0
-import/extensions: 0
-
-# Включает поддержку конструкции import.meta.url
-parserOptions:
-  ecmaVersion: 2020
+  no-console: 0
+  import/extensions: 0
