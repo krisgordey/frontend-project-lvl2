@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
   "bin": {
-    "gendiff": "./bin/index.js"
+    "gendiff": "bin/index.js"
   },
   "main": "./src/index.js",
   "engines": {
     "node": ">=14"
   },
   "scripts": {
-    "test": "npx jest --experimental-vm-modules"
+    "test": "npx -n --experimental-vm-modules jest"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
+    "@jest/globals": "^26.6.2",
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
