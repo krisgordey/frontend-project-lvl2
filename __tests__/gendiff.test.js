@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import readFile from '../src/utils/readFile.js';
 import genDiff from '../src/genDiff';
 

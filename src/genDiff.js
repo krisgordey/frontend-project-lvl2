@@ -31,10 +31,6 @@ const genDiff = (data1, data2) => {
     return meta;
   });
 
-  console.log(data1);
-  console.log(data2);
-  console.log(diff);
-
   return diff;
 };
 

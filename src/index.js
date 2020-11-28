@@ -1,4 +1,6 @@
+import path from 'path';
 import readFile from './utils/readFile.js';
+import parsers from './utils/parsers.js';
 
 import genDiff from './genDiff.js';
 import formatToStringOutput from './formatToStringOutput.js';
@@ -8,8 +10,11 @@ export default (path1, path2, cmdObj) => {
   const file1Content = readFile(path1);
   const file2Content = readFile(path2);
 
-  const data1 = JSON.parse(file1Content);
-  const data2 = JSON.parse(file2Content);
+  const extFile1 = path.extname(path1);
+  const extFile2 = path.extname(path2);
+
+  const data1 = parsers(file1Content, extFile1);
+  const data2 = parsers(file2Content, extFile2);
 
   const diff = genDiff(data1, data2);
 
