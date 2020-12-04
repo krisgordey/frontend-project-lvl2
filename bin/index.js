@@ -11,10 +11,7 @@ const program = new commander.Command();
 program
   .version(version)
   .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format [type]', 'output format')
+  .option('-f, --format [type]', 'output format', 'stylish')
   .arguments('<filepath1> <filepath2>')
-  .action(genDiff);
-
-program.parse(process.argv);
-
-if (program.format) console.log(`- ${program.format}`);
+  .action((path1, path2, programObj) => console.log(genDiff(path1, path2, programObj.format)))
+  .parse(process.argv);

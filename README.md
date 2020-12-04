@@ -24,6 +24,8 @@ Compares two files and shows a difference.
 
 #### Gendiff
 
-gendiff path1 path2
+gendiff
 [![asciicast](https://asciinema.org/a/DLLroIvOieM6pkOx3no21zIut.svg)](https://asciinema.org/a/DLLroIvOieM6pkOx3no21zIut)
 
+gendiff in default format
+[![asciicast](https://asciinema.org/a/vxQomd5dMBczSCyFwCCgycTTL.svg)](https://asciinema.org/a/vxQomd5dMBczSCyFwCCgycTTL)

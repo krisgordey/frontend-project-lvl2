@@ -1,9 +1,7 @@
 import fs from 'fs';
-import getFilePath from './getFilePath.js';
+import path from 'path';
 
 export default (filePath) => {
-  const fullPath = getFilePath(filePath);
-  const data = fs.readFileSync(fullPath).toString();
-
-  return data;
+  const fullPath = path.resolve(process.cwd(), filePath);
+  return fs.readFileSync(fullPath, 'utf8');
 };
