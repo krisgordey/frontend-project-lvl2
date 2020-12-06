@@ -24,8 +24,9 @@ Compares two files and shows a difference.
 
 #### Gendiff
 
-gendiff
-[![asciicast](https://asciinema.org/a/DLLroIvOieM6pkOx3no21zIut.svg)](https://asciinema.org/a/DLLroIvOieM6pkOx3no21zIut)
 
-gendiff in default format
+gendiff in stylish format
 [![asciicast](https://asciinema.org/a/vxQomd5dMBczSCyFwCCgycTTL.svg)](https://asciinema.org/a/vxQomd5dMBczSCyFwCCgycTTL)
+
+gendiff in plain format
+[![asciicast](https://asciinema.org/a/pW7ZC0WSPsU8qstKKLC0XGhxE.svg)](https://asciinema.org/a/pW7ZC0WSPsU8qstKKLC0XGhxE)

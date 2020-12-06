@@ -26,21 +26,23 @@ const format = (diffAST, tabsCount) => {
   const stringsList = diffAST.flatMap(({
     key, status, oldVal, newVal, nested,
   }) => {
-    if (status === Statuses.UNCHANGED) {
-      return `${getTabs(tabsCount + 1)}${Marker.EMPTY} ${key}: ${formatValue(newVal, tabsCount)}`;
-    } if (status === Statuses.CHANGED) {
-      return [
-        `${getTabs(tabsCount + 1)}${Marker.MINUS} ${key}: ${formatValue(oldVal, tabsCount)}`,
-        `${getTabs(tabsCount + 1)}${Marker.PLUS} ${key}: ${formatValue(newVal, tabsCount)}`,
-      ];
-    } if (status === Statuses.ADDED) {
-      return `${getTabs(tabsCount + 1)}${Marker.PLUS} ${key}: ${formatValue(newVal, tabsCount)}`;
-    } if (status === Statuses.DELETED) {
-      return `${getTabs(tabsCount + 1)}${Marker.MINUS} ${key}: ${formatValue(oldVal, tabsCount)}`;
-    } if (status === Statuses.NESTED) {
-      return `${getTabs(tabsCount + 1)}${Marker.EMPTY} ${key}: {\n${format(nested, tabsCount + 2)}\n${getTabs(tabsCount + 2)}}`;
+    switch (status) {
+      case Statuses.UNCHANGED:
+        return `${getTabs(tabsCount + 1)}${Marker.EMPTY} ${key}: ${formatValue(newVal, tabsCount)}`;
+      case Statuses.CHANGED:
+        return [
+          `${getTabs(tabsCount + 1)}${Marker.MINUS} ${key}: ${formatValue(oldVal, tabsCount)}`,
+          `${getTabs(tabsCount + 1)}${Marker.PLUS} ${key}: ${formatValue(newVal, tabsCount)}`,
+        ];
+      case Statuses.ADDED:
+        return `${getTabs(tabsCount + 1)}${Marker.PLUS} ${key}: ${formatValue(newVal, tabsCount)}`;
+      case Statuses.DELETED:
+        return `${getTabs(tabsCount + 1)}${Marker.MINUS} ${key}: ${formatValue(oldVal, tabsCount)}`;
+      case Statuses.NESTED:
+        return `${getTabs(tabsCount + 1)}${Marker.EMPTY} ${key}: {\n${format(nested, tabsCount + 2)}\n${getTabs(tabsCount + 2)}}`;
+      default:
+        throw new Error('Unexpected AST node status type');
     }
-    throw new Error('unexpected AST node status type');
   });
 
   return stringsList.join('\n');

@@ -3,10 +3,10 @@ import readFile from './utils/readFile.js';
 import parsers from './parsers.js';
 
 import genAST from './genAST.js';
-import stylish from './formatters/stylish.js';
+import format from './formatters/index.js';
 
 // eslint-disable-next-line
-export default (path1, path2, format = 'stylish') => {
+export default (path1, path2, formatName = 'stylish') => {
   const file1Content = readFile(path1);
   const file2Content = readFile(path2);
 
@@ -18,7 +18,7 @@ export default (path1, path2, format = 'stylish') => {
 
   const diffAST = genAST(parsedData1, parsedData2);
 
-  const formattedOutput = stylish(diffAST);
+  const formattedOutput = format(diffAST, formatName);
 
   return formattedOutput;
 };
