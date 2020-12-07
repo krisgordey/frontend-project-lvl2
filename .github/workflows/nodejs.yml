@@ -4,6 +4,7 @@ name: Node CI
 # Trigger the workflow on push or pull request
 on:
   - push
+  - pull_request
 
 jobs:
   build:
@@ -24,12 +25,14 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         # Configures the node version used on GitHub-hosted runners
         # https://github.com/actions/setup-node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2-beta
         # The Node.js version to configure
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build
-        # Install and build project
+      - name: Check node version
+        run: node -v
+      - name: npm install
+        # Install project
         run: |
           make install
         # Add environment variables
