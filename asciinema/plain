@@ -1,0 +1,7 @@
+{"version": 2, "width": 223, "height": 18, "timestamp": 1607291192, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.328161, "o", "\u001b]0;kristina@kristina-HP-250-G5-Notebook-PC: ~/Documents/learn/frontend-project-lvl2\u0007\u001b[01;32mkristina@kristina-HP-250-G5-Notebook-PC\u001b[00m:\u001b[01;34m~/Documents/learn/frontend-project-lvl2\u001b[00m$ "]
+[3.649704, "o", "gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json -f plain"]
+[5.731557, "o", "\r\n"]
+[5.841152, "o", "Property 'common.follow' was added with value: false\r\nProperty 'common.setting2' was removed\r\nProperty 'common.setting3' was updated. From true to null\r\nProperty 'common.setting4' was added with value: 'blah blah'\r\nProperty 'common.setting5' was added with value: [complex value]\r\nProperty 'common.setting6.doge.wow' was updated. From '' to 'so much'\r\nProperty 'common.setting6.ops' was added with value: 'vops'\r\nProperty 'group1.baz' was updated. From 'bas' to 'bars'\r\nProperty 'group1.nest' was updated. From [complex value] to 'str'\r\nProperty 'group2' was removed\r\nProperty 'group3' was added with value: [complex value]\r\n\r\n"]
+[5.850244, "o", "\u001b]0;kristina@kristina-HP-250-G5-Notebook-PC: ~/Documents/learn/frontend-project-lvl2\u0007\u001b[01;32mkristina@kristina-HP-250-G5-Notebook-PC\u001b[00m:\u001b[01;34m~/Documents/learn/frontend-project-lvl2\u001b[00m$ "]
+[8.686483, "o", "exit\r\n"]
