@@ -30,3 +30,6 @@ gendiff in stylish format
 
 gendiff in plain format
 [![asciicast](https://asciinema.org/a/pW7ZC0WSPsU8qstKKLC0XGhxE.svg)](https://asciinema.org/a/pW7ZC0WSPsU8qstKKLC0XGhxE)
+
+gendiff in json format
+[![asciicast](https://asciinema.org/a/3RmwViv7lM5JVtLskDi7YUbS1.svg)](https://asciinema.org/a/3RmwViv7lM5JVtLskDi7YUbS1)

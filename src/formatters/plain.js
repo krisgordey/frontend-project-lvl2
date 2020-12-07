@@ -59,5 +59,5 @@ export default (diffAST) => {
         throw new Error(`Unknown status: ${status}`);
     }
   }).filter((it) => Boolean(it));
-  return `${stringsList.join('\n')}\n`;
+  return `${stringsList.join('\n')}`;
 };

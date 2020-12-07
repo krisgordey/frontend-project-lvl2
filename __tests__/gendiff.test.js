@@ -13,10 +13,10 @@ describe('Test gendiff for stylish', () => {
     ['yml', 'json'],
     ['json', 'yml'],
     ['yml', 'yml'],
-  ])('gendiff(%s, %s)', async (file1ext, file2ext) => {
+  ])('gendiff(%s, %s)', (file1ext, file2ext) => {
     const file1path = getFixturePath(`file1.${file1ext}`);
     const file2path = getFixturePath(`file2.${file2ext}`);
-    const expected = await readFixtureFile('result-stylish.txt');
+    const expected = readFixtureFile('result-stylish.txt');
 
     expect(gendiff(file1path, file2path, 'stylish')).toEqual(expected);
   });
@@ -28,11 +28,26 @@ describe('Test gendiff for plain', () => {
     ['yml', 'json'],
     ['json', 'yml'],
     ['yml', 'yml'],
-  ])('gendiff(%s, %s)', async (file1ext, file2ext) => {
+  ])('gendiff(%s, %s)', (file1ext, file2ext) => {
     const file1path = getFixturePath(`file1.${file1ext}`);
     const file2path = getFixturePath(`file2.${file2ext}`);
-    const expected = await readFixtureFile('result-plain.txt');
+    const expected = readFixtureFile('result-plain.txt');
 
     expect(gendiff(file1path, file2path, 'plain')).toEqual(expected);
+  });
+});
+
+describe('Test gendiff for json', () => {
+  test.each([
+    ['json', 'json'],
+    ['yml', 'json'],
+    ['json', 'yml'],
+    ['yml', 'yml'],
+  ])('gendiff(%s, %s)', (file1ext, file2ext) => {
+    const file1path = getFixturePath(`file1.${file1ext}`);
+    const file2path = getFixturePath(`file2.${file2ext}`);
+    const expected = readFixtureFile('result-json.json');
+
+    expect(gendiff(file1path, file2path, 'json')).toEqual(expected);
   });
 });

@@ -48,4 +48,4 @@ const format = (diffAST, tabsCount) => {
   return stringsList.join('\n');
 };
 
-export default (diffAST) => `{\n${format(diffAST, 0)}\n}\n`;
+export default (diffAST) => `{\n${format(diffAST, 0)}\n}`;

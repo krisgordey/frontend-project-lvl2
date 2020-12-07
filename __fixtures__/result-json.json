@@ -1,0 +1,177 @@
+[
+  {
+    "key": "common",
+    "status": "nested",
+    "nested": [
+      {
+        "key": "follow",
+        "status": "added",
+        "newVal": false
+      },
+      {
+        "key": "setting1",
+        "status": "unchanged",
+        "oldVal": "Value 1",
+        "newVal": "Value 1"
+      },
+      {
+        "key": "setting2",
+        "status": "deleted",
+        "oldVal": 200
+      },
+      {
+        "key": "setting3",
+        "status": "changed",
+        "oldVal": true,
+        "newVal": null
+      },
+      {
+        "key": "setting4",
+        "status": "added",
+        "newVal": "blah blah"
+      },
+      {
+        "key": "setting5",
+        "status": "added",
+        "newVal": {
+          "key5": "value5"
+        }
+      },
+      {
+        "key": "setting6",
+        "status": "nested",
+        "nested": [
+          {
+            "key": "doge",
+            "status": "nested",
+            "nested": [
+              {
+                "key": "wow",
+                "status": "changed",
+                "oldVal": "",
+                "newVal": "so much"
+              }
+            ],
+            "oldVal": {
+              "wow": ""
+            },
+            "newVal": {
+              "wow": "so much"
+            }
+          },
+          {
+            "key": "key",
+            "status": "unchanged",
+            "oldVal": "value",
+            "newVal": "value"
+          },
+          {
+            "key": "ops",
+            "status": "added",
+            "newVal": "vops"
+          }
+        ],
+        "oldVal": {
+          "key": "value",
+          "doge": {
+            "wow": ""
+          }
+        },
+        "newVal": {
+          "key": "value",
+          "ops": "vops",
+          "doge": {
+            "wow": "so much"
+          }
+        }
+      }
+    ],
+    "oldVal": {
+      "setting1": "Value 1",
+      "setting2": 200,
+      "setting3": true,
+      "setting6": {
+        "key": "value",
+        "doge": {
+          "wow": ""
+        }
+      }
+    },
+    "newVal": {
+      "follow": false,
+      "setting1": "Value 1",
+      "setting3": null,
+      "setting4": "blah blah",
+      "setting5": {
+        "key5": "value5"
+      },
+      "setting6": {
+        "key": "value",
+        "ops": "vops",
+        "doge": {
+          "wow": "so much"
+        }
+      }
+    }
+  },
+  {
+    "key": "group1",
+    "status": "nested",
+    "nested": [
+      {
+        "key": "baz",
+        "status": "changed",
+        "oldVal": "bas",
+        "newVal": "bars"
+      },
+      {
+        "key": "foo",
+        "status": "unchanged",
+        "oldVal": "bar",
+        "newVal": "bar"
+      },
+      {
+        "key": "nest",
+        "status": "changed",
+        "oldVal": {
+          "key": "value"
+        },
+        "newVal": "str"
+      }
+    ],
+    "oldVal": {
+      "baz": "bas",
+      "foo": "bar",
+      "nest": {
+        "key": "value"
+      }
+    },
+    "newVal": {
+      "foo": "bar",
+      "baz": "bars",
+      "nest": "str"
+    }
+  },
+  {
+    "key": "group2",
+    "status": "deleted",
+    "oldVal": {
+      "abc": 12345,
+      "deep": {
+        "id": 45
+      }
+    }
+  },
+  {
+    "key": "group3",
+    "status": "added",
+    "newVal": {
+      "fee": 100500,
+      "deep": {
+        "id": {
+          "number": 45
+        }
+      }
+    }
+  }
+]
