@@ -3,7 +3,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2c3dd1f492d0fa2f8962/test_coverage)](https://codeclimate.com/github/krisgordey/frontend-project-lvl2/test_coverage)
 
 # GenDiff
-Compares two files and shows a difference.
+CLI app, which compares two configuration files and shows a difference.
 
 
 ---

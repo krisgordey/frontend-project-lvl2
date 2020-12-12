@@ -13,51 +13,29 @@ const formatValue = (value) => {
   return value;
 };
 
-const getFlattenAST = (diffAST, path = '') => {
-  const result = diffAST.flatMap(({
-    key, status, nested, oldVal, newVal,
-  }) => {
-    const accPath = `${path}${key}`;
+export default (diff) => {
+  const iter = (nodes, accPath) => {
+    const stringsList = nodes.flatMap((node) => {
+      const path = `${accPath}${node.key}`;
 
-    switch (status) {
-      case Statuses.UNCHANGED:
-        return { key: accPath, status };
-      case Statuses.CHANGED:
-        return {
-          key: accPath, status, oldVal, newVal,
-        };
-      case Statuses.ADDED:
-        return { key: accPath, status, newVal };
-      case Statuses.DELETED:
-        return { key: accPath, status };
-      case Statuses.NESTED:
-        return getFlattenAST(nested, `${accPath}.`);
-      default:
-        throw new Error('Unexpected AST node status type');
-    }
-  });
+      switch (node.status) {
+        case Statuses.NESTED:
+          return iter(node.children, `${path}.`);
+        case Statuses.UNCHANGED:
+          return null;
+        case Statuses.CHANGED:
+          return `Property '${path}' was updated. From ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`;
+        case Statuses.ADDED:
+          return `Property '${path}' was added with value: ${formatValue(node.newValue)}`;
+        case Statuses.DELETED:
+          return `Property '${path}' was removed`;
+        default:
+          throw new Error(`Unknown status: ${node.status}`);
+      }
+    }).filter((it) => Boolean(it));
 
-  return result;
-};
+    return `${stringsList.join('\n')}`;
+  };
 
-export default (diffAST) => {
-  const flattenAST = getFlattenAST(diffAST);
-
-  const stringsList = flattenAST.map(({
-    key, status, oldVal, newVal,
-  }) => {
-    switch (status) {
-      case Statuses.UNCHANGED:
-        return null;
-      case Statuses.CHANGED:
-        return `Property '${key}' was updated. From ${formatValue(oldVal)} to ${formatValue(newVal)}`;
-      case Statuses.ADDED:
-        return `Property '${key}' was added with value: ${formatValue(newVal)}`;
-      case Statuses.DELETED:
-        return `Property '${key}' was removed`;
-      default:
-        throw new Error(`Unknown status: ${status}`);
-    }
-  }).filter((it) => Boolean(it));
-  return `${stringsList.join('\n')}`;
+  return iter(diff, '');
 };

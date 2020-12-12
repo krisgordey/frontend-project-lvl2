@@ -7,45 +7,43 @@ const Marker = {
   EMPTY: ' ',
 };
 
-const getTabs = (count) => '  '.repeat(count);
+const getIndent = (count) => '  '.repeat(count);
 
-const formatValue = (value, tabsCount) => {
+const formatValue = (value, depth) => {
   if (!_.isObject(value)) {
     return `${value}`;
   }
 
   const arr = Object.entries(value).reduce(
-    (acc, [key, val]) => [...acc, `${getTabs(tabsCount + 4)}${key}: ${formatValue(val, tabsCount + 2)}`],
+    (acc, [key, val]) => [...acc, `${getIndent(depth + 4)}${key}: ${formatValue(val, depth + 2)}`],
     [],
   );
 
-  return `{\n${arr.join('\n')}\n${getTabs(tabsCount + 2)}}`;
+  return `{\n${arr.join('\n')}\n${getIndent(depth + 2)}}`;
 };
 
-const format = (diffAST, tabsCount) => {
-  const stringsList = diffAST.flatMap(({
-    key, status, oldVal, newVal, nested,
-  }) => {
-    switch (status) {
+const format = (diff, depth) => {
+  const stringsList = diff.flatMap((node) => {
+    switch (node.status) {
       case Statuses.UNCHANGED:
-        return `${getTabs(tabsCount + 1)}${Marker.EMPTY} ${key}: ${formatValue(newVal, tabsCount)}`;
+        return `${getIndent(depth + 1)}${Marker.EMPTY} ${node.key}: ${formatValue(node.newValue, depth)}`;
       case Statuses.CHANGED:
         return [
-          `${getTabs(tabsCount + 1)}${Marker.MINUS} ${key}: ${formatValue(oldVal, tabsCount)}`,
-          `${getTabs(tabsCount + 1)}${Marker.PLUS} ${key}: ${formatValue(newVal, tabsCount)}`,
+          `${getIndent(depth + 1)}${Marker.MINUS} ${node.key}: ${formatValue(node.oldValue, depth)}`,
+          `${getIndent(depth + 1)}${Marker.PLUS} ${node.key}: ${formatValue(node.newValue, depth)}`,
         ];
       case Statuses.ADDED:
-        return `${getTabs(tabsCount + 1)}${Marker.PLUS} ${key}: ${formatValue(newVal, tabsCount)}`;
+        return `${getIndent(depth + 1)}${Marker.PLUS} ${node.key}: ${formatValue(node.newValue, depth)}`;
       case Statuses.DELETED:
-        return `${getTabs(tabsCount + 1)}${Marker.MINUS} ${key}: ${formatValue(oldVal, tabsCount)}`;
+        return `${getIndent(depth + 1)}${Marker.MINUS} ${node.key}: ${formatValue(node.oldValue, depth)}`;
       case Statuses.NESTED:
-        return `${getTabs(tabsCount + 1)}${Marker.EMPTY} ${key}: {\n${format(nested, tabsCount + 2)}\n${getTabs(tabsCount + 2)}}`;
+        return `${getIndent(depth + 1)}${Marker.EMPTY} ${node.key}: {\n${format(node.children, depth + 2)}\n${getIndent(depth + 2)}}`;
       default:
-        throw new Error('Unexpected AST node status type');
+        throw new Error('Unexpected node status type');
     }
   });
 
   return stringsList.join('\n');
 };
 
-export default (diffAST) => `{\n${format(diffAST, 0)}\n}`;
+export default (diff) => `{\n${format(diff, 0)}\n}`;

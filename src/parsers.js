@@ -1,14 +1,8 @@
 import yaml from 'js-yaml';
 
-const parsersFactory = (format) => {
-  let parse;
-  if (format === '' || format === '.json') {
-    parse = JSON.parse;
-  } else if (format === '.yml' || format === '.yaml') {
-    parse = yaml.safeLoad;
-  }
-
-  return parse;
+const parse = {
+  json: JSON.parse,
+  yml: yaml.safeLoad,
 };
 
-export default (data, format) => parsersFactory(format)(data);
+export default (data, ext) => parse[ext](data);
