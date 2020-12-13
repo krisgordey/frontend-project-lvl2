@@ -26,16 +26,16 @@ const format = (diff, depth) => {
   const stringsList = diff.flatMap((node) => {
     switch (node.status) {
       case Statuses.UNCHANGED:
-        return `${getIndent(depth + 1)}${Marker.EMPTY} ${node.key}: ${formatValue(node.newValue, depth)}`;
+        return `${getIndent(depth + 1)}${Marker.EMPTY} ${node.key}: ${formatValue(node.value, depth)}`;
       case Statuses.CHANGED:
         return [
           `${getIndent(depth + 1)}${Marker.MINUS} ${node.key}: ${formatValue(node.oldValue, depth)}`,
           `${getIndent(depth + 1)}${Marker.PLUS} ${node.key}: ${formatValue(node.newValue, depth)}`,
         ];
       case Statuses.ADDED:
-        return `${getIndent(depth + 1)}${Marker.PLUS} ${node.key}: ${formatValue(node.newValue, depth)}`;
+        return `${getIndent(depth + 1)}${Marker.PLUS} ${node.key}: ${formatValue(node.value, depth)}`;
       case Statuses.DELETED:
-        return `${getIndent(depth + 1)}${Marker.MINUS} ${node.key}: ${formatValue(node.oldValue, depth)}`;
+        return `${getIndent(depth + 1)}${Marker.MINUS} ${node.key}: ${formatValue(node.value, depth)}`;
       case Statuses.NESTED:
         return `${getIndent(depth + 1)}${Marker.EMPTY} ${node.key}: {\n${format(node.children, depth + 2)}\n${getIndent(depth + 2)}}`;
       default:

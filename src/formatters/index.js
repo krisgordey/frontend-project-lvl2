@@ -9,5 +9,5 @@ export default (diff, formatName) => {
     json,
   };
 
-  return `${formatters[formatName](diff)}`;
+  return formatters[formatName](diff);
 };

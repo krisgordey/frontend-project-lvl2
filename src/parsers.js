@@ -5,4 +5,4 @@ const parse = {
   yml: yaml.safeLoad,
 };
 
-export default (data, ext) => parse[ext](data);
+export default (data, dataFormatName) => parse[dataFormatName](data);

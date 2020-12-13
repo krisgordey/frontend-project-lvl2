@@ -26,15 +26,15 @@ export default (diff) => {
         case Statuses.CHANGED:
           return `Property '${path}' was updated. From ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`;
         case Statuses.ADDED:
-          return `Property '${path}' was added with value: ${formatValue(node.newValue)}`;
+          return `Property '${path}' was added with value: ${formatValue(node.value)}`;
         case Statuses.DELETED:
           return `Property '${path}' was removed`;
         default:
           throw new Error(`Unknown status: ${node.status}`);
       }
-    }).filter((it) => Boolean(it));
+    }).filter((it) => it);
 
-    return `${stringsList.join('\n')}`;
+    return stringsList.join('\n');
   };
 
   return iter(diff, '');

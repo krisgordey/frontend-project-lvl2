@@ -13,18 +13,20 @@ const readFile = (filePath) => {
 
 const readFixtureFile = (filename) => readFile(`__fixtures__/${filename}`).trim();
 
+const stylishResult = readFixtureFile('result-stylish.txt');
+const plainResult = readFixtureFile('result-plain.txt');
+const jsonResult = readFixtureFile('result-json.txt');
+
 describe('Test gendiff', () => {
   test.each([
-    ['json', 'json'],
     ['yml', 'json'],
     ['json', 'yml'],
-    ['yml', 'yml'],
   ])('gendiff(%s, %s)', (file1ext, file2ext) => {
     const filepath1 = getFixturePath(`file1.${file1ext}`);
     const filepath2 = getFixturePath(`file2.${file2ext}`);
-    const stylishResult = readFixtureFile('result-stylish.txt');
-    const plainResult = readFixtureFile('result-plain.txt');
-    const jsonResult = readFixtureFile('result-json.txt');
+    // const stylishResult = readFixtureFile('result-stylish.txt');
+    // const plainResult = readFixtureFile('result-plain.txt');
+    // const jsonResult = readFixtureFile('result-json.txt');
 
     expect(gendiff(filepath1, filepath2, 'stylish')).toEqual(stylishResult);
     expect(gendiff(filepath1, filepath2, 'plain')).toEqual(plainResult);
