@@ -1,6 +1,6 @@
 import path from 'path';
 import readFile from './utils/readFile.js';
-import parser from './parsers.js';
+import parser from './parser.js';
 
 import genTree from './genTree.js';
 import format from './formatters/index.js';
