@@ -15,7 +15,7 @@ const formatValue = (value) => {
 
 export default (diff) => {
   const iter = (nodes, accPath) => {
-    const stringsList = nodes.flatMap((node) => {
+    const stringsList = nodes.map((node) => {
       const path = `${accPath}${node.key}`;
 
       switch (node.status) {

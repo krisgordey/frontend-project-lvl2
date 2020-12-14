@@ -23,7 +23,7 @@ const stringify = (value, depth) => {
 };
 
 const format = (diffTree) => {
-  const iter = (tree, depth) => tree.flatMap((node) => {
+  const iter = (tree, depth) => tree.map((node) => {
     switch (node.status) {
       case Statuses.NESTED:
         return `${getIndent(depth)}${Marker.EMPTY} ${node.key}: {\n${iter(node.children, depth + 1)}\n${getIndent(depth)}  }`;
@@ -32,8 +32,7 @@ const format = (diffTree) => {
       case Statuses.DELETED:
         return `${getIndent(depth)}${Marker.MINUS} ${node.key}: ${stringify(node.value, depth)}`;
       case Statuses.CHANGED:
-        return [`${getIndent(depth)}${Marker.MINUS} ${node.key}: ${stringify(node.oldValue, depth)}`,
-          `${getIndent(depth)}${Marker.PLUS} ${node.key}: ${stringify(node.newValue, depth)}`];
+        return `${getIndent(depth)}${Marker.MINUS} ${node.key}: ${stringify(node.oldValue, depth)}\n${getIndent(depth)}${Marker.PLUS} ${node.key}: ${stringify(node.newValue, depth)}`;
       case Statuses.UNCHANGED:
         return `${getIndent(depth)}${Marker.EMPTY} ${node.key}: ${stringify(node.value, depth)}`;
       default:
