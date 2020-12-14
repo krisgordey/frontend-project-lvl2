@@ -63,4 +63,4 @@ gendiff in json format:
 gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json -f json
 ```
 
-[![asciicast](https://asciinema.org/a/3RmwViv7lM5JVtLskDi7YUbS1.svg)](https://asciinema.org/a/3RmwViv7lM5JVtLskDi7YUbS1)
+[![asciicast](https://asciinema.org/a/KjXTSWmbX02KLWBhITLocgh3Y.svg)](https://asciinema.org/a/KjXTSWmbX02KLWBhITLocgh3Y)
