@@ -39,7 +39,7 @@ gendiff [options] <filepath1> <filepath2>
 Options:
 - -V, --version - output the version number
 - -f, --format - output format (stylish, plain, JSON). Default output format is stylish
-- -h, --help - output usage infromation
+- -h, --help - output usage information
 
 ### Examples
 
