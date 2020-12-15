@@ -23,6 +23,9 @@ Node.JS (version 14.0 or higher) required. To install this utility, you need to 
 
 ```python
 git clone https://github.com/krisgordey/frontend-project-lvl2
+cd frontend-project-lvl2
+npm install
+npm link
 ```
 
 Then you should go to utility directory (where you clone it) on your machine and use command:

@@ -1,5 +1,5 @@
 {
-  "name": "gengiff",
+  "name": "@krisgordey/gengiff",
   "version": "1.0.0",
   "description": "Compares two configuration files and shows a difference.",
   "bin": {

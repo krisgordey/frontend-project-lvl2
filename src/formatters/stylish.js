@@ -7,9 +7,9 @@ const Marker = {
   EMPTY: ' ',
 };
 
-const baseIndent = 4;
+const markerOffset = 4;
 const firstIndent = 2;
-const getIndent = (depth) => (' ').repeat(firstIndent + baseIndent * depth);
+const getIndent = (depth) => (' ').repeat(firstIndent + markerOffset * depth);
 
 const stringify = (value, depth) => {
   if (!_.isObject(value)) {
