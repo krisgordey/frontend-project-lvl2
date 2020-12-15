@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Statuses } from './utils/constants.js';
+import Types from './utils/constants.js';
 
 const genTree = (data1, data2) => {
   const unionSortedKeys = _.union(Object.keys(data1), Object.keys(data2)).sort();
@@ -8,34 +8,34 @@ const genTree = (data1, data2) => {
     if (!_.has(data1, key)) {
       return {
         key,
-        status: Statuses.ADDED,
+        type: Types.ADDED,
         value: data2[key],
       };
     }
     if (!_.has(data2, key)) {
       return {
         key,
-        status: Statuses.DELETED,
+        type: Types.DELETED,
         value: data1[key],
       };
     }
     if (data1[key] === data2[key]) {
       return {
         key,
-        status: Statuses.UNCHANGED,
+        type: Types.UNCHANGED,
         value: data1[key],
       };
     }
     if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
       return {
         key,
-        status: Statuses.NESTED,
+        type: Types.NESTED,
         children: genTree(data1[key], data2[key]),
       };
     }
     return {
       key,
-      status: Statuses.CHANGED,
+      type: Types.CHANGED,
       oldValue: data1[key],
       newValue: data2[key],
     };

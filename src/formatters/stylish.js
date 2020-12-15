@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Statuses } from '../utils/constants.js';
+import Types from '../utils/constants.js';
 
 const Marker = {
   MINUS: '-',
@@ -24,19 +24,19 @@ const stringify = (value, depth) => {
 
 const format = (diffTree) => {
   const iter = (tree, depth) => tree.map((node) => {
-    switch (node.status) {
-      case Statuses.NESTED:
+    switch (node.type) {
+      case Types.NESTED:
         return `${getIndent(depth)}${Marker.EMPTY} ${node.key}: {\n${iter(node.children, depth + 1)}\n${getIndent(depth)}  }`;
-      case Statuses.ADDED:
+      case Types.ADDED:
         return `${getIndent(depth)}${Marker.PLUS} ${node.key}: ${stringify(node.value, depth)}`;
-      case Statuses.DELETED:
+      case Types.DELETED:
         return `${getIndent(depth)}${Marker.MINUS} ${node.key}: ${stringify(node.value, depth)}`;
-      case Statuses.CHANGED:
+      case Types.CHANGED:
         return `${getIndent(depth)}${Marker.MINUS} ${node.key}: ${stringify(node.oldValue, depth)}\n${getIndent(depth)}${Marker.PLUS} ${node.key}: ${stringify(node.newValue, depth)}`;
-      case Statuses.UNCHANGED:
+      case Types.UNCHANGED:
         return `${getIndent(depth)}${Marker.EMPTY} ${node.key}: ${stringify(node.value, depth)}`;
       default:
-        throw new Error(`unexpected node status: ${node.status}`);
+        throw new Error(`unexpected node type: ${node.type}`);
     }
   }).join('\n');
   return `{\n${iter(diffTree, 0)}\n}`;
