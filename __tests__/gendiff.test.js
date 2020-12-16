@@ -10,13 +10,6 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-// const getFixturePath = (filename) => path.resolve(process.cwd(), `__fixtures__/${filename}`);
-//
-// const readFile = (filePath) => {
-//   const fullPath = path.resolve(process.cwd(), filePath);
-//   return fs.readFileSync(fullPath, 'utf8');
-// };
-
 const readFixtureFile = (filename) => readFile(filename).trim();
 
 const stylishResult = readFixtureFile('result-stylish.txt');
